@@ -1,0 +1,41 @@
+#################################################################
+ASP.Net Web API Delete Method
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=LTFv362D0mI&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b&index=8
+
+
+1. Implement Delete method in ASP.Net Web api
+
+Create a public void delete() method in employeescontroller. Pass employee id as parameter. The parameter will be supplied
+by the requesturi.
+
+Move to fidder. Go to composer tab, copy the API url and select delete as method from the dropdown. and also provide employee id
+to delete 
+
+It looks fine but if you look at the response header its 204 content not found, this is becuase the return type of delete method is void.
+Also if you choose to delete an items which is not in collection we get 500 internal server error.
+
+
+As standard approach for rest service we should be returning the status codes where when delete is successful its 200 and 404 for item
+not found 
+
+Change the void return type to HTTPResponseMessage, declare a new variable called response message
+  try
+            {
+                var sString = strings.ElementAt(id);
+
+                if (sString == null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Id not found");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
