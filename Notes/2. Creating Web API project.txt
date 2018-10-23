@@ -1,0 +1,32 @@
+#################################################################
+Creating Web API Project
+#################################################################
+
+1. To create web api project. Open visual studio 2015. Create new project, select web give it a name and select next and select web api type.
+
+if you come across with errors package installation errors - could not add all required packages
+or failed to initalise the powershell host. 
+
+To resolve the issue, close all instance of visual studio, open powershell by going to all apps. go to w and select windows powershell folder 
+Run powershell as administrator, if security prompt comes up press R(Run once). Then type SET Execution policy Allsigned 
+
+2. Lets explore the auto generated code by project.
+
+Just like an MVC project. Web Api project has model, views and controller. If you expand controller you should be able to see
+MVC controller and web api controller. Both are different Web Api controller values controller inherits from API controller and is 
+in namespace system.web.http. MVC controller Home controller inherits from controller class and is in namespace system.web.mvc 
+
+Values controller class will have verbs Get, Post, Put, Delete. controller has got two overloaded method get. one to return list and another a record.
+based on the value passed as parameter in uri, subsequent method gets called 
+
+To look at default route, open global.asax where we will application_start event handler method. which gets called when application starts.
+Configuration for web api is stored in webapi.register web api class is stored in app_start folder. we can default route configured here.
+Web api routes are different from MVC routes becuase MVC routes are present in RouteConfig.cs 
+
+3. To run the project, hit f5. once the localhost gets loaded. as per the route type api/name of the controller as below
+
+http://localhost_8080/api/values
+
+The above request gets mapped to values controller and default get method method is called which returns the values 
+
+

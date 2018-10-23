@@ -1,0 +1,51 @@
+#################################################################
+HTTP Verbs
+#################################################################
+
+Just like actions we can do to a database row, same applies to web api's
+
+Create - Post
+Read -Get
+Update - Put
+Delete - Delete
+
+Request verbs(Get, Post, Put, Delete) describe what needs to be done to a resource 
+
+When a request is sent to the server, it contains request header and body.
+
+Request header will contain what kind of response is required eg: xml response or json response
+Request body will contain contain the data which you want to send to the server. For post
+it will contain the resource to be created 
+Response body will contain the data sent as response from the server 
+Response status code: Provide the client, status of the request. 
+200 - for ok, 404 - not found 204 - no content 
+
+Use a tool called fiddler to perform http verb actions.
+
+Create HTTP verbs:
+
+1. go to values controller and create a list<string> with string values.
+
+Update the get method to return list of strings previously created.
+Update the get(id) method to return value of string at index id
+Update the post method to add new value to list<string>
+Update the put method to edit value at particular index
+Update the delete method to delete value at particular index.
+
+2. Open Fiddler, run the web api endpoint address. it should be captured in fiddler double click on the request to view it
+click on the composer table, drag and drop the request. you should be able to see what type of request it is and
+uri for the request. 
+
+To add new string using post, select post as verb from the drop down. specify new value in the request body and specify content type as
+application/json and click execute. Then click the new action in the left to see the response header is 204 
+
+To view the newly added value, go to composer and select as action verb and hit execute look at the response header as 200 
+
+To change the response type to JSON go to composer and change the accept header to Json.
+
+To update a existing value, go to composer change the verb to Put and enter in request body new string value  and give the index of the string to 
+be update after the values controller.
+
+To delete a existing value, go to composer change the verb to delete  give the index of the string to be update after the values controller.
+
+The return type of Post, Put and Delete is void that's the reason why we get the response header as 204, we can control the return type 

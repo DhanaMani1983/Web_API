@@ -1,0 +1,32 @@
+#################################################################
+ASP.Net Web API content negotiation 
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=C3q9C6s0s7w&index=5&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b
+
+Client should be able to decide the format of response to get from the server. eg: xml, josn
+When client sends the request it can specify the response format using accept-header. Accept:application/xml,
+Accept:application/Json 
+
+If you inspect in fiddler based on the format specified in request header we get response which can be verified in
+content-type of response header.
+
+The controller in case of get verb once it has retrieved the dataset will hand it over to the web api pipeline
+which based on the response type requested by the client will return the resource in that format. 
+
+Web api uses formatter classes to return resource in that format and this is called media type formatter.
+
+Web api is customisable so we can implement our own formatter class for the resource to be returned
+
+Multiple values can also be specified in accept header as application/xml, application/json but it will pick the first one 
+
+you can also specify quality factor application/xml;q=0.8, application/json;q=0.5. In this case xml has got highest quality factor 
+
+If accept header is not set default is JSON format.
+
+When we send request to the server, we need to specify the content type so that the server is aware of what format we are sending the data.
+
+The formatter are used by the server for both request/response messages. These formatters are called media type formatters.
+
+You can set the media type formatters in WebApiConfig.cs file by using config.Formatters.JsonFormatter.SerializerSettings = NewtonSoft.Json.Formatting.Indented
+config.Formatters.JsonFormatter.ContractResolver = new CamelcasePropertyNamesContractResolver

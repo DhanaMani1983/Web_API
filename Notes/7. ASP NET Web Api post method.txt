@@ -1,0 +1,49 @@
+#################################################################
+ASP.Net Web API Post Method
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=0eGUix3Nkjg&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b&index=7
+
+
+1. Implement post method in ASP.Net Web api
+
+Create a public void post() method in employeescontroller. Pass employee as parameter. The parameter will be supplied
+by the request as a parameter body. decorate the parameter with attribute [frombody].
+
+Move to fidder. Go to composer tab, copy the API url and select post as method from the dropdown. in the request body
+type the json object To let the web api service know we are sending json formatted object set the content-type: application/json
+
+It looks fine but if you look at the response header its 204 content not found, this is becuase the return type of post method is void.
+
+As standard approach for rest service we should be returning the status codes where for post it should be 201 for new item added, with
+a new web link to the newly created item. 
+
+Change the void return type to HTTPResponseMessage, declare a new variable called response message
+ try
+            {
+                strings.Add(value);
+                var responseMessage = Request.CreateResponse(HttpStatusCode.Created, value);
+                responseMessage.Headers.Location = new Uri(Request.RequestUri + value.ToString());
+                return responseMessage;
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+
+Inspect the request in fiddler where you can see the response message is 201 new record created and also response message contains newly created
+resource uri.
+
+In case of get request if the the return type is an object and not http response we might get misleading response message so change the 
+get method return type as http response 
+
+var sString = strings[id];
+            if (sString!= null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, sString);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "Requested item with value" + id + " cannot be found");
+            }
+

@@ -1,0 +1,50 @@
+#################################################################
+What is Web API
+#################################################################
+
+1. What is ASP.NET web api?
+
+ASP.NET web api is a framework for building web api's. HTTP based services on top of .net framework 
+
+Use case for web api is building restful services. 
+
+2. These services can be consumed by broad range of clients like
+
+Browser, Mobile Applications, Desktop Applications, IoT - Internet of Things are objects and devices that have an IP address
+and can communicate over internet and internet enabled devices and objects. examples of IoTs include security systems, electronic
+devices, thermostats in cars, homes and also desktops, laptops and smartphones.
+
+Web api is mainly use to create restful services and also it can be use to create services which are not restful. 
+
+2. Restful services - Rest stands for Representational state transfer. Rest is an architectural pattern to create services over http as 
+communication method.
+Rest dictates set of contraints which are 
+
+ClientServer - Client sends a request and Server responds to the client with a response message.
+Stateless - Communication between server and client should be stateless for each request. which means we should not be storing
+anything related to the client on the server. The request send by the client should have all necessary information needed to process the 
+request. Reason being each request can be treated independently. 
+Cacheable - Server sends resource like list of customer or list of clients. If this data doesn't change, server provides timeline for how
+long the data is valid 
+Uniform interface - UI defines the interface between client and server. To understand uniform interface you need to understand resource and http verbs.
+Resource represent data entities eg list of employees or customers. http verb is get, post, put, delete. http verbs tell server what to do.
+each resource is identified by a uri. 
+
+http://webaddress or company domain/employees with verb get is used to get employees
+http://webaddress or company domain/employees/1 with verb get is used to get an employee
+http://webaddress or company domain/employees with verb post is used to add an employee
+http://webaddress or company domain/employees/1 with verb put is used to update an employee
+http://webaddress or company domain/employees/1 with verb delete is used to delete an employee
+
+HATEOS 
+Layered system
+Code on demand
+
+3. different between WCF and Web API - WCF can be used to create Restful services, then why do you need to use Web API
+because to create REST in WCF we need to set lot of configurations. so its not straight forward. 
+
+When to use WCF over ASP.Net web api - Creating services that are transport/protocol independant. single service with multiple end points ie. java client
+which needs http protocol and xml message and another .net client with tcp protocol and binary message format. 
+You have existing SOAP service to support but want to extend with restful services.
+.Net 3.5 limitation 
+

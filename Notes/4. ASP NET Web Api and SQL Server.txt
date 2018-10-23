@@ -1,0 +1,23 @@
+#################################################################
+Retrieve data from SQL Server using Web API and EF 
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=nMGlaiNBbNU&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b&index=4
+
+We are going to develop a web api to CRUD employees.
+
+Create a new web api project by name EmployeeService. 
+Create a new class library project name EmployeeDataAccess
+Delete a default class.
+Switch to SQL server and create a table Employee with columns ID, FirstName, Surname, Gender, Salary.
+Create a EF data model, by right click on class library, add EF data model
+Once data access project is created, add the project to the Employee services reference 
+Next thing to do is create a controller to web api project. Right click on controller's folder
+and select web api2 controller - empty. Let call it EmployeesController 
+Create a get method to return list of employees 
+To know the DBcontext name, go to EF and open EmployeeDataModelContext.tt and then EmployeeDataModelContext.cs
+Create a get method to return just one employee.
+
+When you run the application you might get an error with connection string is missing. Copy the connection string
+from app.config to web.config 
+
