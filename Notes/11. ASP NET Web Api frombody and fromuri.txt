@@ -1,0 +1,32 @@
+#################################################################
+ASP.Net Web API FromBody and FromURI
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=TbPTfI8jmgM&index=12&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b
+
+FromBody and FromURI attributes:
+
+if you look at the put method below in fiddler, we will be supplying parameters id fromuri and string value frombody
+
+  public void Put(int id, [FromBody]string value)
+        {
+            strings[id] = value;
+        }
+
+The parameters gets associated correctly with the method this is called parameter binding. 
+
+Web api default convention for parameter binding
+
+If the parameter is simple type like int, bool, double etc. 
+web api gets the parameter fromuri(either from routedata or from querystring)
+
+If the parameter is complex type like customer, employee etc. web api tries 
+to get the parameter frombody.
+
+To change the default parameter binding process use [FromBody] and [FromURI] parameters alternatively
+for example for simple type use [FromBody] and for complex type use [FromUri]
+ 
+
+
+
+

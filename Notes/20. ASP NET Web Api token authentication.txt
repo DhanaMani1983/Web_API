@@ -1,0 +1,38 @@
+#################################################################
+ASP NET Web Api token authentication
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=gkWb7yQb6ro&index=20&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b
+SRC: http://csharp-video-tutorials.blogspot.com/2016/11/aspnet-web-api-token-authentication.html
+
+In this video and in a few upcoming videos, we will discuss step by step, 
+how to implement token based authentication in ASP.NET Web API 
+using OWIN middleware and Identity framework. Open web interface for .Net
+
+We will be using the following Employees table for this demo. 
+ASP.NET Web API token authentication 
+
+
+ 
+
+
+Only authenticated users should be able to access the above Employee data. In addition new users should be able to register. 
+The new user registration form looks as shown below. token based authentication web api c# 
+
+Once a new user is registered with our application, he should be able to login into our system, using the login form shown below. 
+asp.net web api 2 bearer token 
+
+If the user is successfully authenticated, then he will be redirected to the Data.html page, 
+which displays the employee data from the Employees table as shown below. When the "Log Off" button is clicked, 
+the user is logged out and redirected to the login page. 
+asp.net web api authentication token example 
+
+In addition to OWIN middleware and ASP.NET Identity, we will use the following technologies. 
+Click on the links if you are new to any of these technologies
+ASP.NET Web API
+SQl Server
+ADO.NET Entity Framework
+Bootstrap
+jQuery
+ 
+

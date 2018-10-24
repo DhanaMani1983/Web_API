@@ -1,0 +1,34 @@
+#################################################################
+ASP.Net Web API Using query string parameters
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=BDi0A2HRNRc&index=11&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b
+
+Using query string parameters in ASP.Net Web Api
+
+Depending on value we specify for query string parmeter gender, the Get() should return the data.
+
+http://localhost/api/employees?gender=All - All Employees
+http://localhost/api/employees?gender=Male - Male Employees
+http://localhost/api/employees?gender=Female - Female Employees
+
+If the gender is not male, female or all it should return bad request and message 
+
+ public HttpResponseMessage Get(String Gender="All")
+        {
+	    using(EmployeeDbEntities entities = new EmployeeDbEntities())
+	    {
+               switch(gender.ToLower())
+               {
+                   case: "all"
+                         return Request.CreateResponse(HttpStatusCode.OK, entities.employees.tolist());
+                    case: "male"
+                         return Request.CreateResponse(HttpStatusCode.OK, entities.employees.where(e=>e.gender=="male");
+		    default:
+                          case: "All"
+                         return Request.CreateResponse(HttpStatusCode.BadRequest, entities.employees.tolist());
+
+		}
+	    }
+          
+        }

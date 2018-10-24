@@ -1,0 +1,17 @@
+#################################################################
+ASP.Net Web API Custom Method Names
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=wT2qQu0kGAs&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b&index=10
+
+
+Default convention to map http verbs to methods in a controller - By default the http verb is mapped to a method
+in a controller which has the same name or starts with the verb name.
+
+HTTP Verb get is mapped to method: Get() or GetEmployee() or GetSomething()
+
+If the method name is not get or doesn't start with the word get. it will fail with error 
+The requested resource doesn't support http method Get - Status code 405 Not allowed
+If we decorate the method with keyword [HttpGet] we can resolve the issue 
+
+We have other attribute to map custom methods in a controller class to Get, Post, Put and Delete Http Verbs 

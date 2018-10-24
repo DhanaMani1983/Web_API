@@ -1,0 +1,57 @@
+#################################################################
+Calling ASP.Net Web API service Using Jquery 
+#################################################################
+
+SRC: https://www.youtube.com/watch?v=0PW2EJhk6ms&list=PL6n9fhu94yhW7yoUOGNOfHurUE6bpOO2b&index=13
+
+Calling ASP.Net Web API service Using Jquery:
+
+Design a html page with two buttons and unordered list, Click on get all employees button to call the web api service
+using jquery and display list of employees in unordered list. 
+
+Create a new html page called employees.html, because we are going to use Jquery, from the scripts folder
+drag and drop Jquery.
+
+In the body section create html tags for button get all employees, button clear and ul list 
+
+Create a javascript tag and within the tag write jquery function as below 
+where on get all employees button click call the web api 
+here in this instance the html page and service are same project so use relative uri /api/employees
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ulEmployees = $('#ulEmployees');
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "api/employees/",
+                    dataType: 'json',
+                    success: function (data) {
+                        ulEmployees.empty();
+                        $.each(data, function (index, val) {
+                            var fullName = val.FirstName + ' ' + val.LastName;
+                            ulEmployees.append('<li>' + fullName + '</li>');
+                        });
+                    }
+                });
+            });
+            $('#btnClear').click(function () {
+                ulEmployees.empty();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <input id="btn" type="button" value="Get All Employees" />
+        <input id="btnClear" type="button" value="Clear" />
+        <ul id="ulEmployees" />
+    </div>
+</body>
+</html>
